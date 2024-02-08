@@ -145,7 +145,7 @@ class worker(AppCommand):
                     self._human_cython_info(),
                     ("drivers", ""),
                     ("  transport", app.transport.driver_version),
-                    ("  web", app.web.driver_version),
+                    ("  web", app.web.driver_version) if app.conf.web_enabled else None,
                     ("datadir", f"{str(app.conf.datadir.absolute()):<40}"),
                     ("appdir", f"{str(app.conf.appdir.absolute()):<40}"),
                 ],

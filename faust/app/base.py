@@ -692,7 +692,9 @@ class App(AppT, Service):
 
     def worker_init_post_autodiscover(self) -> None:
         """Init worker after autodiscover."""
-        self.web.init_server()
+        if self.conf.web_enabled:
+            self.web.init_server() # enable web server if enabled
+
         self.on_worker_init.send()
 
     def discover(
